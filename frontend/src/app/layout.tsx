@@ -1,9 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+'use client';
+
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
-import MainLayout from './components/layout/MainLayout';
-import Home from './pages/Home';
+import MainLayout from '@/components/layout/MainLayout';
 
 // Create a theme instance
 const theme = createTheme({
@@ -30,20 +29,15 @@ const theme = createTheme({
   },
 });
 
-function App() {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* Add more routes as we develop the features */}
-          </Routes>
-        </MainLayout>
-      </Router>
-    </ThemeProvider>
+    <html lang="en">
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <MainLayout>{children}</MainLayout>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
-
-export default App;

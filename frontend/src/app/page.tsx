@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {
   Box,
@@ -42,7 +44,7 @@ const Home: React.FC = () => {
           我们的婚礼
         </Typography>
         <Typography variant="h6" sx={{ mb: 2 }}>
-          2024.06.01
+          2024.09.20
         </Typography>
         <Button
           variant="contained"
@@ -60,7 +62,7 @@ const Home: React.FC = () => {
 
       {/* Quick Info Cards */}
       <Grid container spacing={2} sx={{ mb: 4 }}>
-        <Grid item xs={6}>
+        <Box sx={{ flex: 1, minWidth: 0 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ textAlign: 'center' }}>
               <AccessTime sx={{ fontSize: 40, color: theme.palette.primary.main }} />
@@ -70,8 +72,8 @@ const Home: React.FC = () => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={6}>
+        </Box>
+        <Box sx={{ flex: 1, minWidth: 0 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ textAlign: 'center' }}>
               <LocationOn sx={{ fontSize: 40, color: theme.palette.primary.main }} />
@@ -81,7 +83,7 @@ const Home: React.FC = () => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
       </Grid>
 
       {/* Photo Gallery Preview */}

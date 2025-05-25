@@ -1,23 +1,24 @@
+'use client';
+
 import React from 'react';
 import { Box, BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 import { Home, PhotoLibrary, Event, People, Info } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const getCurrentTab = () => {
-    const path = location.pathname;
-    if (path === '/') return 0;
-    if (path === '/photos') return 1;
-    if (path === '/schedule') return 2;
-    if (path === '/guests') return 3;
-    if (path === '/info') return 4;
+    if (pathname === '/') return 0;
+    if (pathname === '/photos') return 1;
+    if (pathname === '/schedule') return 2;
+    if (pathname === '/guests') return 3;
+    if (pathname === '/info') return 4;
     return 0;
   };
 
@@ -43,22 +44,22 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       >
         <BottomNavigation
           value={getCurrentTab()}
-          onChange={(_, newValue) => {
+          onChange={(_: unknown, newValue: number) => {
             switch (newValue) {
               case 0:
-                navigate('/');
+                router.push('/');
                 break;
               case 1:
-                navigate('/photos');
+                router.push('/photos');
                 break;
               case 2:
-                navigate('/schedule');
+                router.push('/schedule');
                 break;
               case 3:
-                navigate('/guests');
+                router.push('/guests');
                 break;
               case 4:
-                navigate('/info');
+                router.push('/info');
                 break;
             }
           }}
